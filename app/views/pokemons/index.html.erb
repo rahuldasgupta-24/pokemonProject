@@ -1,0 +1,38 @@
+<h1>Pokédex</h1>
+
+<%= link_to 'Add New Pokémon', new_pokemon_path, class: 'btn btn-primary mb-3' %>
+
+<table class="table table-hover">
+  <thead class="thead-light">
+    <tr>
+      <th style="text-align: center; padding: 10px;">Pokémon</th>
+      <th style="text-align: center; padding: 10px;">Name</th>
+      <th style="text-align: center; padding: 10px;">ID No.</th>
+      <th style="text-align: center; padding: 10px;">Type</th>
+      <th style="text-align: center; padding: 30px;">Move 1 </th>
+      <th style="text-align: center; padding: 30px;">Move 2 </th>
+      <th style="text-align: center; padding: 10px;">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @pokemons.each do |pokemon| %>
+      <tr>
+        <td style="text-align: center;">
+          <% if pokemon.image.attached? %>
+            <%= image_tag pokemon.image, width: "100", class: 'pokemon-image' %>
+          <% end %>
+        </td>
+        <td style="text-align: center; color: <%= pokemon.color %>;"><%= pokemon.name %></td>
+        <td style="text-align: center; color: <%= pokemon.color %>;"><%= pokemon.pokedex_number %></td>
+        <td style="text-align: center; color: <%= pokemon.color %>;"><%= pokemon.typing %></td>
+        <td style="text-align: center; color: <%= pokemon.color %>;"><%= pokemon.move1 %></td>
+        <td style="text-align: center; color: <%= pokemon.color %>;"><%= pokemon.move2 %></td>
+        <td style="text-align: center;">
+          <%= link_to 'Show', pokemon_path(pokemon), class: 'btn btn-secondary' %>
+          <%= link_to 'Edit', edit_pokemon_path(pokemon), class: 'btn btn-secondary' %>
+          <%= button_to 'Release', pokemon_path(pokemon), method: :delete, class: 'btn btn-danger' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

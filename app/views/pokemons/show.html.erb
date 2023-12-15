@@ -1,0 +1,28 @@
+<h1><%= @pokemon.name %></h1>
+
+<p>
+  <strong>Pokédex Number:</strong>
+  <%= @pokemon.pokedex_number %>
+</p>
+
+<p>
+  <strong>Type:</strong>
+  <%= @pokemon.typing %>
+</p>
+
+<p>
+  <strong>Move 1:</strong>
+  <%= @pokemon.move1 %>
+</p>
+
+<p>
+  <strong>Move 2:</strong>
+  <%= @pokemon.move2 %>
+</p>
+
+<% if @pokemon.image.attached? %>
+  <%= image_tag @pokemon.image %>
+<% end %>
+
+<%= link_to 'Back to List', pokemons_path, class: 'btn btn-secondary' %>
+<%= link_to 'Edit', edit_pokemon_path(@pokemon) %>

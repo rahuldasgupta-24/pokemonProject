@@ -1,0 +1,24 @@
+<h1>Edit <%= @pokemon.name %></h1>
+
+<%= form_with(model: @pokemon, local: true) do |form| %>
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  
+    <%= form.label :pokedex_number %>
+    <%= form.number_field :pokedex_number %>
+  
+    <%= form.label :typing, 'Type' %>
+    <%= form.select :typing, Pokemon.typings.keys, class: 'form-control' %>
+  
+    <%= form.label :move1 %>
+    <%= form.text_field :move1 %>
+  
+    <%= form.label :move2 %>
+    <%= form.text_field :move2 %>
+  
+    <%= form.label :image %>
+    <%= form.file_field :image %>
+  
+    <%= form.submit "Update Pokémon" %>
+  <% end %>
+  
