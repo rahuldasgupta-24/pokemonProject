@@ -1,0 +1,14 @@
+<h1>Assign Pokémon to <%= @trainer.name %></h1>
+
+<%= form_with(model: @pokemon_trainer, url: trainer_pokemon_trainers_path(@trainer)) do |form| %>
+    <%= form.hidden_field :trainer_id, value: @trainer.id %>
+
+    <div class="field">
+        <%= form.label :pokemon_id, "Select Pokémon" %>
+        <%= form.collection_select :pokemon_id, @pokemons, :id, :name, prompt: true %>
+    </div>
+
+    <div class="actions">
+        <%= form.submit "Assign Pokémon" %>
+    </div>
+<% end %>

@@ -1,0 +1,42 @@
+<h1>Trainers</h1>
+
+<%= link_to 'Back to Pokémon List', pokemons_path, class: 'btn btn-secondary mb-3' %>
+<%= link_to 'Create New Trainer', new_trainer_path, class: 'btn btn-primary mb-3' %>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Image</th>
+      <th>Pokémon</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @trainers.each do |trainer| %>
+      <tr>
+        <td><%= trainer.name %></td>
+        <td>
+          <% if trainer.image.attached? %>
+            <%= image_tag trainer.image, width: '100px' %>
+          <% else %>
+            <p>No image</p>
+          <% end %>
+        </td>
+        <td>
+          <% trainer.pokemons.each do |pokemon| %>
+            <p><%= pokemon.name %></p>
+            <%= image_tag pokemon.image, width: '50px' if pokemon.image.attached? %>
+          <% end %>
+        </td>
+        <td>
+          <%= button_to 'Delete', trainer_path(trainer),
+              method: :delete,
+              data: { confirm: 'Are you sure you want to delete this trainer?' },
+              class: 'btn btn-danger' %>
+                <%= link_to 'Add Pokémon', new_trainer_pokemon_trainer_path(trainer), class: 'btn btn-primary' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
