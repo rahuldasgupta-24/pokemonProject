@@ -1,8 +1,13 @@
 class PokemonTrainersController < ApplicationController
+
     def new
-      @trainer = Trainer.find(params[:trainer_id])
-      @pokemon_trainer = PokemonTrainer.new
-      @pokemons = Pokemon.all
+      if Pokemon.exists?
+        @trainer = Trainer.find(params[:trainer_id])
+        @pokemon_trainer = PokemonTrainer.new
+        @pokemons = Pokemon.all
+      else
+        redirect_to trainers_path, alert: 'You need to create Pokémon first.'
+      end
     end
   
     def create

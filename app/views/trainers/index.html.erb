@@ -6,8 +6,7 @@
 <table class="table">
   <thead>
     <tr>
-      <th>Name</th>
-      <th>Image</th>
+      <th>Trainer</th>
       <th>Pokémon</th>
       <th>Actions</th>
     </tr>
@@ -15,8 +14,9 @@
   <tbody>
     <% @trainers.each do |trainer| %>
       <tr>
-        <td><%= trainer.name %></td>
-        <td>
+        <td style="text-align: center;">
+          <strong><%= trainer.name %></strong>
+          <br>
           <% if trainer.image.attached? %>
             <%= image_tag trainer.image, width: '100px' %>
           <% else %>
@@ -25,16 +25,19 @@
         </td>
         <td>
           <% trainer.pokemons.each do |pokemon| %>
-            <p><%= pokemon.name %></p>
-            <%= image_tag pokemon.image, width: '50px' if pokemon.image.attached? %>
+            <div style="text-align: center; display: inline-block; margin-right: 10px;">
+              <%= image_tag pokemon.image, width: '50px' if pokemon.image.attached? %>
+              <br>
+              <%= pokemon.name %>
+            </div>
           <% end %>
         </td>
         <td>
-          <%= button_to 'Delete', trainer_path(trainer),
+          <%= button_to 'Delete Trainer', trainer_path(trainer),
               method: :delete,
-              data: { confirm: 'Are you sure you want to delete this trainer?' },
               class: 'btn btn-danger' %>
-                <%= link_to 'Add Pokémon', new_trainer_pokemon_trainer_path(trainer), class: 'btn btn-primary' %>
+          <br>
+          <%= link_to 'Add Pokémon', new_trainer_pokemon_trainer_path(trainer), class: 'btn btn-primary' %>
         </td>
       </tr>
     <% end %>

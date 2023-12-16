@@ -1,9 +1,15 @@
 class PokemonsController < ApplicationController
     
     def destroy
-        @pokemon = Pokemon.find(params[:id])
+      @pokemon = Pokemon.find(params[:id])
+
+      # Check if the Pokémon is assigned to any trainers
+      if @pokemon.trainers.any?
+        redirect_to pokemons_path, alert: 'Cannot delete Pokémon because it is assigned to a trainer. Please first delete the associated trainer.'
+      else
         @pokemon.destroy
-        redirect_to pokemons_url, notice: 'Pokemon was successfully released.'
+        redirect_to pokemons_path, notice: 'Pokémon was successfully deleted.'
+      end
     end
 
     def edit

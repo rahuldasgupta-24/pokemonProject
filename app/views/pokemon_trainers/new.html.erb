@@ -5,8 +5,9 @@
 
     <div class="field">
         <%= form.label :pokemon_id, "Select Pokémon" %>
-        <%= form.collection_select :pokemon_id, @pokemons, :id, :name, prompt: true %>
+        <%= form.collection_select :pokemon_id, @pokemons, :id, :name %>
     </div>
+  
 
     <div class="actions">
         <%= form.submit "Assign Pokémon" %>
