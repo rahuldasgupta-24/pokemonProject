@@ -8,7 +8,7 @@ class PokemonsController < ApplicationController
         redirect_to pokemons_path, alert: 'Cannot delete Pokémon because it is assigned to a trainer. Please first delete the associated trainer.'
       else
         @pokemon.destroy
-        redirect_to pokemons_path, notice: 'Pokémon was successfully deleted.'
+        redirect_to pokemons_path
       end
     end
 
@@ -19,7 +19,7 @@ class PokemonsController < ApplicationController
     def update
         @pokemon = Pokemon.find(params[:id])
         if @pokemon.update(pokemon_params)
-            redirect_to pokemons_path, notice: 'Pokemon was successfully updated.'
+            redirect_to pokemons_path
         else
             render :edit
         end

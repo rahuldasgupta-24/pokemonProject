@@ -13,7 +13,7 @@ class PokemonTrainersController < ApplicationController
     def create
       @pokemon_trainer = PokemonTrainer.new(pokemon_trainer_params)
       if @pokemon_trainer.save
-        redirect_to trainers_path, notice: 'Pokémon assigned successfully.'
+        redirect_to trainers_path
       else
         render :new
       end
