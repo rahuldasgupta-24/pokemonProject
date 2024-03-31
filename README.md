@@ -1,24 +1,4 @@
-# README
+#PokemonProject by Rahul Dasgupta and Kevin Clark
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+###Overview
+This repository is the code for our Final Project in the Principles of Programming Languages course instructed by Professor Irfan at Bowdoin College. We used Ruby/Rails and HTML to code a simple website inspired by Pokemon.
